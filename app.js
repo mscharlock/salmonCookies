@@ -31,11 +31,10 @@ var location = {
   cookiesAtHour: function () {
     for (var i=this.hours[0]; i<this.hours[19]; i++) {
       console.log(' number of cookies sold was: '+ this.averageCookieSales);
+  //   }
+  // cookiesSoldToday:
     }
-  // cookiesSoldToday: function () {
-  //   var soldToday = 0
-  }
   }
 };
 
-location();
+location;
