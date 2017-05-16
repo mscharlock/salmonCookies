@@ -31,10 +31,24 @@ var location = {
   cookiesAtHour: function () {
     for (var i=this.hours[0]; i<this.hours[19]; i++) {
       console.log(' number of cookies sold was: '+ this.averageCookieSales);
-  //   }
-  // cookiesSoldToday:
     }
-  }
+  // cookiesSoldToday:
+  //   }
+}
+location.randomCrowd();
+
+function domForCookies () {
+var container = document.createElement('div');
+container.innerHTML='<p>'+ location.cookiesAtHour + '</p>'
+document.body.appendChild(container);
 };
 
-location;
+domForCookies();
+
+function domForPeople() {
+  var container1 = document.createElement('div');
+  container.innerHTML='<p>' + location.peopleAtHour + '<p>'
+  document.body.appendChild(container);
+}
+
+domForPeople();
