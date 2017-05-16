@@ -46,10 +46,10 @@ function domForCookies () {
 
 domForCookies();
 
-// function domForPeople() {
-//   var container1 = document.createElement('div');
-//   container.innerHTML='<p>' + location.peopleAtHour + '<p>';
-//   document.body.appendChild(container);
-// }
+function domForPeople() {
+  var container1 = document.createElement('div');
+  container1.innerHTML='<p>' + location.peopleAtHour + '<p>';
+  document.body.appendChild(container1);
+}
 
 domForPeople();
