@@ -1,10 +1,10 @@
-//Object for location
-var location = {
+//Object for loc
+var loc = {
   //name of the place
   name: 'First And Pike',
-  //list of the mins for all hours for the location
+  //list of the mins for all hours for the loc
   min: 23,
-  //list of the maxs for all hours for the location
+  //list of the maxs for all hours for the loc
   max: 65,
   //this is their average cookie sales for the whole day usually
   regCookieSales: 6.3,
@@ -36,11 +36,11 @@ var location = {
     }
   }
 };
-location.randomCrowd();
+loc.randomCrowd();
 
 function domForCookies () {
   var container = document.createElement('div');
-  container.innerHTML='<p>'+ location.cookiesAtHour + '</p>';
+  container.innerHTML='<p>'+ loc.cookiesAtHour + '</p>';
   document.body.appendChild(container);
 }
 
@@ -48,7 +48,7 @@ domForCookies();
 
 function domForPeople() {
   var container1 = document.createElement('div');
-  container1.innerHTML='<p>' + location.peopleAtHour + '<p>';
+  container1.innerHTML='<p>' + loc.peopleAtHour + '<p>';
   document.body.appendChild(container1);
 }
 
