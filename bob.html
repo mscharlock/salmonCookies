@@ -35,7 +35,52 @@
     <p>206-999-9999</p>
     <p class="BEO">Email our Baker-in-Chief: Mr. Fisher Forelle</p>
     <p class="oblique">Want Salmon Cookies at your next office meeting, holiday party, or birthday celebration? We can custom make orders just for you.</p>
-  </body>
+
+
+    <!--Adding form-->
+    <form id="store form">
+    <!--Creating the stuff in the form-->
+    <!--Where is the store-->
+    <fieldset>
+      <label for="store_loc">Store Location:</label>
+      <input type="text" name="store_loc" placeholder="enter where your store is" required>
+  </fieldset>
+
+    <fieldset>
+      <label for="max_ppl_day">Maximum number of customers per day:</label>
+      <input type="number" name="max_ppl_day" placeholder="please use a number" required>
+    </fieldset>
+
+    <fieldset>
+      <label for="min_ppl_day"> Maximum number of customers per day:</label>
+      <input type="number" name="max_ppl_day" placeholder="please use a number" required>
+    </fieldset>
+
+    <fieldset>
+      <label for="cookies_sold_day">Cookies sold on average per day:</label>
+      <input type="number" name="cookies_sold_day" placeholder="please use a number" required>
+    </fieldset>
+
+  <button id="submit-store" type="submit">Add Store</button>
+</form>
+
+<!--Building a table so we can put the form info (and some other information!) into it-->
+<section id="store_table">
+  <table>
+    <thead>
+      <td>Store location</td>
+      <td>Maximum people per day</td>
+      <td>Minimum people per day</td>
+      <td>Average cookies per day</td>
+      <td>Total sales for day</td>
+      <td>Cookies needed at 6am</td>
+      <td>Cookies needed at 7am</td> <!--I will have to test this to see if it works and add the rest of the lines-->
+    </thead>
+    <tbody id="store_table_info">
+      <!--We need somewhere to put all of our store table data-->
+    </tbody>
+  </section>
+</body>
 </main>
 <script src='app.js'></script>
 </html>
