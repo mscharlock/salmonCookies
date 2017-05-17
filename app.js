@@ -1,55 +1,69 @@
-//Object for loc
-var loc = {
-  //name of the place
-  name: 'First And Pike',
-  //list of the mins for all hours for the loc
-  min: 23,
-  //list of the maxs for all hours for the loc
-  max: 65,
-  //this is their average cookie sales for the whole day usually
-  regCookieSales: 6.3,
-  //function called averagePeoplePerHour
-  randomCrowd: function () {
-    //we'll take the max + min and divide by 2 to find the average - then multiply it by math.random to generate a random number that's rounded down.
-    //to get a random number between 65 and 23, we have to set 23 as 0 -so we add the minimum so we always have at least 23.
-    var customers = Math.floor(Math.random() * (this.max - this.min)) + this.min;
-    console.log(customers);
-    return customers;
-    //show us the average # per hour
-  },
-  //Averrage cookie sales function
-  averageCookieSales: function () {
-    //log to the console their regular sales * the random people per hour
-    console.log(this.regCookieSales * this.randomCrowd());
-  },
-  //hours they are open in military time
-  hours: [6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20],
-  //cookies sold at each hour
-  peopleAtHour: function () {
-    for (var i=this.hours[0]; i<this.hours[19]; i++) {
-      console.log('# people was: ' +this.randomCrowd);
-    }
-  },
-  cookiesAtHour: function () {
-    for (var i=this.hours[0]; i<this.hours[19]; i++) {
-      console.log(' number of cookies sold was: '+ this.averageCookieSales);
-    }
-  }
+//Constructor function for our store
+function Store (name, max, min, avgCookies) {
+  this.max = max;
+  this.min = min;
+  this.avgCookies = avgCookies;
+}
+
+//method for getting random customers - I'm not sure why this isn't working
+//It may have to do with the fact that we are calling the function on the prototype
+Store.prototype.avgCust = function () {
+  var customers = Math.floor(Math.random() * (this.max - this.min)) + this.min;
+  console.log(customers);
+  return customers;
 };
-loc.randomCrowd();
 
-function domForCookies () {
-  var container = document.createElement('div');
-  container.innerHTML='<p>'+ loc.cookiesAtHour + '</p>';
-  document.body.appendChild(container);
-}
+//Let's make the stores
+var pike = new Store ('First and Pike', 65, 23, 6.3);
+var seaTac = new Store ('SeaTac Airport', 24, 3, 1.2);
+var seattleCenter = new Store ('Seattle Center', 38, 11, 3.7);
+var capHill = new Store ('Capitol Hill', 38, 20, 2.3);
+var alki = new Store (16, 2, 4.6);
 
-domForCookies();
+//Now let's put the stores in one array - I don't know why, seems like a good idea
+var stores = [pike, seaTac, seattleCenter, capHill, alki];
 
-function domForPeople() {
-  var container1 = document.createElement('div');
-  container1.innerHTML='<p>' + loc.peopleAtHour + '<p>';
-  document.body.appendChild(container1);
-}
+//let's just console log to see if the stores worked right
+console.log(capHill.avgCookies);
+//yay, it's working!
 
-domForPeople();
+//Let's list all the times that the stores are open
+var times = [6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20];
+
+//Let's make an empty array we can pass some data into - seems like a good idea
+var empty = [];
+
+//For each time at each store, tell me the random # of people and the random # * avg cookies per hour
+//So take the avgCust function and multiply by the avgCookies
+for (var i = 6, i < 21; i++);
+  var cookiesAtTime = new function () {
+    Store.prototype.avgCust() * this.avgCookies;
+    console.log(cookiesAtTime);
+    return cookiesAtTime;
+};
+
+//I need to apply the function above to stores.
+
+
+
+
+// for (var i in array) {
+//   alert(array[i]);
+// }
+
+
+// for (var prop in obj) {
+//   console.log(`obj.${prop} = ${obj[prop]}`);
+// }
+
+
+
+// stores.forEach( function (avgCookies)
+// {
+//   var x = store.avgCookies;
+//   alert(x);
+// });
+
+// var randoCust = (Math.floor(Math.random() * (this.max - this.min)) + this.min)
+//variable for the times that stores are open
+// var times = [6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20]
