@@ -1,0 +1,62 @@
+* {
+  font-family: Arial;
+  color: white;
+  background-color:#2A2B26;
+  margin: 0 auto;
+}
+
+main {
+  outline: dotted 2px green;
+}
+
+h1 {
+  font-family: 'Amatic SC', cursive;
+  color: white;
+  font-size: 150px;
+  z-index: 99999;
+  outline: dotted 2px green;
+  background-color: RGBA(170, 88, 53, 0.85);
+}
+
+div > h1 {
+  z-index: 9;
+}
+
+div > img {
+  z-index: 99999;
+}
+
+.fish {
+  padding: 10px;
+  margin-top: -350px;
+  z-index:1;
+  outline: dotted 2px orange;
+}
+
+
+nav >ol >li {
+  display: inline-block;
+  outline: dotted 2px green;
+  margin: 40px;
+}
+
+.BEO {
+  font-family:"Palatino Linotype", "Book Antiqua", Palatino, serif
+}
+
+ul {
+  position: relative;
+}
+
+.locations > li {
+  background-color: blue;
+  width: 300px;
+  height: 200px;
+  outline: dotted 2px green;
+  display: inline-block;
+  margin: 10px;
+}
+
+.oblique {
+  font-style: oblique;
+}
