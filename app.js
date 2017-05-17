@@ -31,11 +31,19 @@ var loc = {
     }
   },
   cookiesAtHour: function () {
-    for (var i=this.hours[0]; i<this.hours[19]; i++) {
-      console.log(' number of cookies sold was: '+ this.averageCookieSales);
-    }
+    for (var i=0; i<hours.length; i++) {
+      var salesHour = Math.floor(this.randomCrowd() * this.regCookieSales);
+      console.log(salesHour);
+      return salesHour;
+      }
   }
 };
+
+// //Hint code from Cristina
+// cookieSale = function() {
+//     for (var i = 0; i < hours.length; i++) {
+//       var salesHour = Math.floor(this.getCustomersPerHour() * this.averageCookiesSoldPerCustomer); }
+
 loc.randomCrowd();
 
 function domForCookies () {
