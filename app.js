@@ -31,39 +31,62 @@ console.log(capHill.avgCookies);
 var times = [6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20];
 
 //Let's make an empty array we can pass some data into - seems like a good idea
-var empty = [];
+var sales = [];
 
 //For each time at each store, tell me the random # of people and the random # * avg cookies per hour
+//THIS IS WHERE I GET CONFUSED
 //So take the avgCust function and multiply by the avgCookies
-for (var i = 6, i < 21; i++);
+//loop through times (although we're not actually using them)
+for (var times = 6, times < 21; times+);
+//declaring a new function
   var cookiesAtTime = new function () {
+    //take avgCust and multiply by avgCookies
     Store.prototype.avgCust() * this.avgCookies;
+    //console.log it
     console.log(cookiesAtTime);
+    //return it
     return cookiesAtTime;
 };
 
-//I need to apply the function above to stores.
+//I need to apply the function above to stores??
 
 
+//What I need to do:
+//Loop thru the times
+//in the loop, tell me:
+//what is the random # of customers & return this value & console.log it
+//what is the number of cookies sold (avgCookies * random # customers) & return this value and console.log it
+//push the number of cookies sold (by hour) into the empty sales array
+
+//Total sales
+//Use a method (I don't know which one) to add all the things in the array together
+
+//push total sales into the DOM
 
 
-// for (var i in array) {
-//   alert(array[i]);
-// }
+//make a table and put all the stores in it
+//create table
+var table = document.getElementbyID('shell');
 
+//empty array to put our data in
+var data = [];
 
-// for (var prop in obj) {
-//   console.log(`obj.${prop} = ${obj[prop]}`);
-// }
+//push each store into a td
+for (var i = 0; i < stores.length; i++) {
+  data.push(
+    '<td>' + stores[i].name + '</td>',
+    '<td>' + stores[i].max + '</td>',
+    '<td>' + stores[i].min + '</td>',
+    '<td>' + stores[i].avgCookies + '</td>'
+  )
+}
 
+//declare a row variable
+var new_row;
 
-
-// stores.forEach( function (avgCookies)
-// {
-//   var x = store.avgCookies;
-//   alert(x);
-// });
-
-// var randoCust = (Math.floor(Math.random() * (this.max - this.min)) + this.min)
-//variable for the times that stores are open
-// var times = [6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20]
+//Make new_row be a tr, then put our data array in there
+for (var j = 0; j < data.length; j++) {
+  new_row = document.createElement('tr');
+  new_row = data[j];
+  table.appendChild(new_row);
+}
