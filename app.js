@@ -22,8 +22,6 @@ var loc = {
     //log to the console their regular sales * the random people per hour
     console.log(this.regCookieSales * this.randomCrowd());
   },
-  //hours they are open in military time
-  hours: [6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20],
   //cookies sold at each hour
   peopleAtHour: function () {
     for (var i=this.hours[0]; i<this.hours[19]; i++) {
@@ -35,9 +33,28 @@ var loc = {
       var salesHour = Math.floor(this.randomCrowd() * this.regCookieSales);
       console.log(salesHour);
       return salesHour;
-      }
+    }
+  }
+};//cookies sold at each hour
+
+var peopleAtHour = new function () {
+  for (var i=0; i<hours.length; i++) {
+    console.log('# people was: ' +this.randomCrowd);
   }
 };
+loc.peopleAtHour();
+
+var hours = [6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20];
+
+var cookiesAtHour= new function () {
+  for (var i=0; i<hours.length; i++) {
+    var salesHour = Math.floor(this.randomCrowd() * this.regCookieSales);
+    console.log(salesHour);
+    return salesHour;
+  }
+};
+
+loc.cookiesAtHour();
 
 // //Hint code from Cristina
 // cookieSale = function() {
@@ -46,6 +63,7 @@ var loc = {
 
 loc.randomCrowd();
 
+//put CookiesAtHour in the DOM
 function domForCookies () {
   var container = document.createElement('div');
   container.innerHTML='<p>'+ loc.cookiesAtHour + '</p>';
@@ -54,6 +72,8 @@ function domForCookies () {
 
 domForCookies();
 
+
+//Put peopleAtHour in the dom
 function domForPeople() {
   var container1 = document.createElement('div');
   container1.innerHTML='<p>' + loc.peopleAtHour + '<p>';
