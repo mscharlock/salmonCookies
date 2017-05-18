@@ -1,8 +1,11 @@
 //Constructor function for our store
 function Store (name, max, min, avgCookies) {
+  this.name=name;
   this.max = max;
   this.min = min;
   this.avgCookies = avgCookies;
+  this.salesCalc = [];
+  this.totalSales = 0;
 }
 
 //method for getting random customers
@@ -25,9 +28,6 @@ var stores = [pike, seaTac, seattleCenter, capHill, alki];
 //Let's list all the times that the stores are open
 var times = [6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20];
 
-//Let's make an empty array we can pass some data into - seems like a good idea
-var sales = [];
-
 //For each time at each store, tell me the random # of people and the random # * avg cookies per hour
 //THIS IS WHERE I GET CONFUSED
 //So take the avgCust function and multiply by the avgCookies
@@ -43,10 +43,6 @@ for (var i = 0; i < times.length; i++) {
   };
 }
 
-
-//Let's list all the times that the stores are open
-var times = [6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20];
-
 // Loop thru the times to get the sales of cookies per hour
 Store.prototype.generateSales = function () {
   for (var i = 0; i < times.length; i++) {
@@ -58,7 +54,6 @@ Store.prototype.generateSales = function () {
     this.totalSales += cookiesAtHour; //note to self: Claire helped with this quite a bit. += is the previous thing plus whatever comes after it added together. What we're doing here is making generateSales() give us the daily total of sales
   }
 };
-
 
 //let's render the table as a function
 function renderTable() {
