@@ -52,7 +52,7 @@ for (var i = 0; i < stores.length; i++) {
     '<td>' + stores[i].max + '</td>' +
     '<td>' + stores[i].min + '</td>' +
     '<td>' + stores[i].avgCookies + '</td>' +
-    // '<td>' + stores[i].salesCalc() + '</td>' +
+    '<td>' + stores[i].salesCalc() + '</td>' +
     '<td>' + stores[i].totalSales + '</td>' );
 }
 
