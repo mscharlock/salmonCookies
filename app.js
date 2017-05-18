@@ -23,10 +23,6 @@ var alki = new Store (16, 2, 4.6);
 //Now let's put the stores in one array - I don't know why, seems like a good idea
 var stores = [pike, seaTac, seattleCenter, capHill, alki];
 
-//let's just console log to see if the stores worked right
-console.log(capHill.avgCookies);
-//yay, it's working!
-
 //Let's list all the times that the stores are open
 var times = [6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20];
 
