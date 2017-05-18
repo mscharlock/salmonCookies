@@ -42,28 +42,32 @@ Store.prototype.generateSales = function () {
   }
 };
 
-//now the stupid table
-var table = document.getElementById('tablething');
-var data = [];
 
-for (var i = 0; i < stores.length; i++) {
-  data.push(
-    '<td>' + stores[i].name + '</td>' +
-    '<td>' + stores[i].max + '</td>' +
-    '<td>' + stores[i].min + '</td>' +
-    '<td>' + stores[i].avgCookies + '</td>' +
-    '<td>' + stores[i].salesCalc() + '</td>' +
-    '<td>' + stores[i].totalSales + '</td>' );
+//now we render the table
+function renderTable() {
+  var table = document.getElementById('tablething');
+  var data = [];
+
+  for (var i = 0; i < stores.length; i++) {
+    data.push(
+      '<td>' + stores[i].name + '</td>' +
+      '<td>' + stores[i].max + '</td>' +
+      '<td>' + stores[i].min + '</td>' +
+      '<td>' + stores[i].avgCookies + '</td>' +
+      '<td>' + stores[i].generateSales() + '</td>' +
+      '<td>' + stores[i].totalSales + '</td>' );
+  }
+
+  var new_row;
+
+  for (var j = 0; j < data.length; j++) {
+    new_row = document.createElement('tr');
+    new_row.innerHTML = data[j];
+    table.appendChild(new_row);
+  }
 }
 
-var new_row;
-
-for (var j = 0; j < data.length; j++) {
-  new_row = document.createElement('tr');
-  new_row.innerHTML = data[j];
-  table.appendChild(new_row);
-}
-
+renderTable();
 
 
 
