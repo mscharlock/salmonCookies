@@ -1,0 +1,40 @@
+/*Styles for our form only!*/
+fieldset {
+ padding: 20px;
+}
+
+input[type="number"] {
+ padding: 7px;
+ margin-left: 10px;
+ border: solid 1px #FFF;
+ border-radius: 3px;
+}
+
+input[type="number"]:focus {
+  background: #999;
+  color: #000;
+}
+
+button {
+ margin-left: 20px;
+ margin-bottom: 20px;
+ border: none;
+ padding: 2px 12px;
+ background: #999;
+ color: #000;
+ border-radius: 3px;
+ cursor:
+}
+
+table {
+   margin-left: 20px;
+}
+
+thead {
+   background:#888;
+}
+
+td {
+ padding: 20px;
+ border: solid 1px #000;
+}
