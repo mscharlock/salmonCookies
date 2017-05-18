@@ -1,0 +1,55 @@
+/*Styles for our form only!*/
+
+fieldset {
+  padding: 20px;
+}
+
+input[type="number"] {
+  padding: 7px;
+  margin-left: 10px;
+  border: solid 1px #FFF;
+  border-radius: 3px;
+}
+
+input[type="number"]:focus {
+  background: #999;
+  color: #000;
+}
+
+button {
+  margin-left: 20px;
+  margin-buttom: 20px;
+  border: none;
+  padding: 2px 12px;
+  background: #999;
+  color: #000;
+  border-radius: 3px;
+  cursor:
+}
+button {
+  margin-left: 20px;
+  margin-bottom: 20px;
+  border: none;
+  padding: 8px 18px;
+  /*usually he starts with 2 and 12px*/
+  background: #000;
+  color: white;
+  border-radius: 3px;
+  cursor: pointer;
+  /*any time you do things that has a button or something that can be clicked on, then you need to specify a cursor type*/
+  font-size: 20px;
+  /*note that our border-radiuses are both 3px, so it's really clean looking and consistent*/
+}
+
+table {
+  margin-left: 20px;
+}
+
+thead {
+  background:#888;
+}
+
+td {
+  padding: 20px;
+  border: solid 1px #000;
+}
