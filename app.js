@@ -31,23 +31,60 @@ var times = [6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20];
 
 // What I need to do:
 // Loop thru the times
-Store.prototype.salesCalc = function () {
+Store.prototype.generateSales = function () {
   for (var i = 0; i < times.length; i++) {
     //give me the random#people * avg daily cookies sold
-    var cookiesAtHour = this.avgCust() * this.avgCookies;
+    var cookiesAtHour = Math.floor(this.avgCust() * this.avgCookies);
     console.log(cookiesAtHour);
     //push that total into salesCalc
     this.salesCalc.push(cookiesAtHour);
+    this.totalSales += cookiesAtHour;
   }
 };
 
-//loop through the sales
-Store.prototype.totalSales = function () {
-  for (var i = 0; i < this.salesCalc.length; i++) {
-    var allSales = this.SalesCalc.reduce((a, b) => a + b);
-    console.log(allSales);
-  }
-};
+//now the stupid table
+var table = document.getElementById('tablething');
+var data = [];
+
+for (var i = 0; i < stores.length; i++) {
+  data.push(
+    '<td>' + stores[i].name + '</td>' +
+    '<td>' + stores[i].max + '</td>' +
+    '<td>' + stores[i].min + '</td>' +
+    '<td>' + stores[i].avgCookies + '</td>' +
+    // '<td>' + stores[i].salesCalc() + '</td>' +
+    '<td>' + stores[i].totalSales + '</td>' );
+}
+
+var new_row;
+
+for (var j = 0; j < data.length; j++) {
+  new_row = document.createElement('tr');
+  new_row.innerHTML = data[j];
+  table.appendChild(new_row);
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+// //loop through the sales and add them all together
+// Store.prototype.totalSales = function () {
+//   for (var i = 0; i < this.salesCalc.length; i++) {
+//     var allSales = this.SalesCalc.reduce(function (a, b) {
+//       return a + b;
+//     }, 0);
+//     console.log(allSales);
+//   }
+// };
 
 //Using method from MDN: https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/Reduce?v=control#Sum_all_the_values_of_an_array
 
