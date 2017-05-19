@@ -86,18 +86,37 @@ Store.prototype.renderTable = function() {
   var table = document.getElementById('tablething');
   var timesForCookies = this.cookiesAtTime();
   var timesData = [];
+
+  var headerPlaces = document.getElementById('headers');
+  var headersForTable = ['Store location', '6am', '7am', '8am', '9am', '10am', '11am', '12pm', '1pm', '2pm', '3pm', '4pm', '5pm', '6pm', '7pm'];
+  var blankArr = [];
+  for (var q = 0; q < headersForTable.length; q++) {
+    blankArr.push('<td>' + headersForTable[q] + '</td>')
+  }
+
+
   timesData.push('<td>' + this.name + '</td>' );
   for (var k = 0; k < timesForCookies.length; k++) {
     timesData.push('<td>' + timesForCookies[k] +'</td>');
   }
   timesData.push('<td>' + this.generateSalesTotals() + '</td>' );
 
+  var header_row;//row for the headersForTable
   var new_row; //we have to put the tds in a row
+
+
+
+//Put in the headers
+  header_row = document.createElement('tr');
+  header_row.innerHTML = headersForTable.join('');
+  table.appendChild(blankArr);
 
 //loop through the data array
   new_row = document.createElement('tr'); //the new row is a row
   new_row.innerHTML = timesData.join(''); //inside the new row, put the data array stuff
   table.appendChild(new_row); //put all that in the table in the DOM
+
+
 };
 
 

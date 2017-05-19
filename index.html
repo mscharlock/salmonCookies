@@ -10,23 +10,24 @@
 </head>
 
 <body>
+  <!--Main "hero" text-->
+      <div>
+        <h1 class="overfish"> Pat's Salmon Cookies </h1>
+      </div>
+  <!--LOGO-->
+  <!--Nav bar-->
+      <nav>
+        <ol>
+          <li><a href='index.html'>About Us</a></li>
+          <li><a href=#>Locations</a></li>
+          <li><a href=#>Contact</a></li>
+          <li><a href='sales.html'>Admin</a></li>
+          <li><a href=#>Merchandise</a></li>
+        </ol>
+      </nav>
+
   <main>
-<!--Nav bar-->
-    <nav>
-      <ol>
-        <li><a href=#>About Us</a></li>
-        <li><a href=#>Locations</a></li>
-        <li><a href=#>Contact</a></li>
-      </ol>
-    </nav>
-<!--Main "hero" text-->
-    <div>
-      <h1 class="overfish"> Salmon Cookies </h1>
-    </div>
-<!--Image of the fish-->
-    <div>
-      <img class="fish" src="https://s11.postimg.org/fia939d03/salmon.png"/>
-    </div>
+  <section class="contentAndBox">
 
   <section class="content">
     <p>We create the finest ground-up salmon cookies in the Northwest. Perfect for dunking in a hot cup of our Jumping Coho brew.</p>
@@ -34,8 +35,10 @@
     <h2>Catch a cookie at the following locations</h2>
     <ul class="locations">
       <li>1st and Pike</li>
-      <li>Store 2</li>
-      <li>Store 3</li>
+      <li>Seatac</li>
+      <li>Capitol Hill</li>
+      <li>Alki</li>
+      <li>Seattle Center</li>
     </ul>
 
     <p>Our production bakery: 9999 Salmon Drive, Seattle, WA 98105</p>
@@ -45,66 +48,11 @@
     <p class="oblique">Want Salmon Cookies at your next office meeting, holiday party, or birthday celebration? We can custom make orders just for you.</p>
   </section>
 
-  <section class="form">
-    <!--Adding form-->
-    <form id="store_form">
-    <!--Creating the stuff in the form-->
-    <!--Where is the store-->
-    <fieldset>
-      <label for="store_loc">Store Location:</label>
-      <input type="text" name="store_loc" placeholder="enter where your store is" required>
-    </fieldset>
-
-    <fieldset>
-      <label for="max_ppl_day">Maximum number of customers per day:</label>
-      <input type="number" name="max_ppl_day" placeholder="please use a number" required>
-    </fieldset>
-
-    <fieldset>
-      <label for="min_ppl_day"> Maximum number of customers per day:</label>
-      <input type="number" name="max_ppl_day" placeholder="please use a number" required>
-    </fieldset>
-
-    <fieldset>
-      <label for="cookies_sold_day">Cookies sold on average per day:</label>
-      <input type="number" name="cookies_sold_day" placeholder="please use a number" required>
-    </fieldset>
-
-  <button id="submit-store" type="submit">Add Store</button>
-</form>
-
-<!--makin' a table for our app.js data-->
-<table>
-  <thead>
-    <td>Store Locations</td>
-    <td>Sales at 6am</td>
-    <td>Sales at 7am</td>
-    <td>Sales at 8am</td>
-    <td>Sales at 9am</td>
-    <td>Sales at 10am</td>
-    <td>Sales at 11am</td>
-    <td>Sales at 12am</td>
-    <td>Sales at 1pm</td>
-    <td>Sales at 2pm</td>
-    <td>Sales at 3pm</td>
-    <td>Sales at 4pm</td>
-    <td>Sales at 5pm</td>
-    <td>Sales at 6pm</td>
-    <td>Sales at 7pm</td>
-    <td>Sales at 8pm</td>
-    <td>Total Sales for the Day</td>
-  </thead>
-  <tbody id = "tablething"> <!--not a great name but I'm not sure what to call it-->
-
-    <!--our table info goes here-->
-
- </tbody>
-</table>
+  <section class="box">  </section>
 </section>
-
-</body>
 </main>
 
+</body>
 <script src='app.js'></script>
 
 </html>

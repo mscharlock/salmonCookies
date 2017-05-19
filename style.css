@@ -1,43 +1,58 @@
-* {
-  font-family: Arial;
-  color: white;
-  background-color:#2A2B26;
+
+nav {
+  background-color: #FFF;
   margin: 0 auto;
+  display: block;
+  position: relative;
 }
 
 main {
   outline: dotted 2px green;
+  width: 1080px;
+  text-align: center;
+  background-color: #FFF;
+}
+
+.contentAndBox {
+  margin-left:0px;
+}
+
+.clearfix {
+  clear: both;
+}
+
+.box {
+    background-image: url('https://s12.postimg.org/z1sdwsjil/Salmon2.jpg');
+    border: black 15px solid;
+    width: 400px;
+    height: 600px;
+    float: left;
+}
+
+.content {
+  width:300px;
+  height: 900px;
+  border: orange 1px dotted;
+  float: left;
+  position: absolute;
+  background-color: red;
 }
 
 h1 {
-  font-family: 'Amatic SC', cursive;
-  color: white;
-  font-size: 150px;
-  z-index: 99999;
-  outline: dotted 2px green;
-  background-color: RGBA(170, 88, 53, 0.85);
+    font-family: 'Amatic SC', cursive;
+    color: white;
+    font-size: 150px;
+    z-index: 99999;
+    position: relative;
+    outline: dotted 2px green;
+    /*background-color: RGBA(170, 88, 53, 0.85);*/
 }
-
-div > h1 {
-  z-index: 9;
-}
-
-div > img {
-  z-index: 99999;
-}
-
-.fish {
-  padding: 10px;
-  margin-top: -350px;
-  z-index:1;
-  outline: dotted 2px orange;
-}
-
 
 nav >ol >li {
   display: inline-block;
   outline: dotted 2px green;
   margin: 40px;
+  background-color: white;
 }
 
 .BEO {
@@ -49,7 +64,6 @@ ul {
 }
 
 .locations > li {
-  background-color: blue;
   width: 300px;
   height: 200px;
   outline: dotted 2px green;
@@ -59,4 +73,11 @@ ul {
 
 .oblique {
   font-style: oblique;
+}
+
+* {
+  font-family: Arial;
+  color: #000;
+  /*background-color:RGBA(170, 88, 53, 1);*/
+
 }

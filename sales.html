@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Salmon Cookies Sales</title>
+  <!--Put in css reset sheet link, also regular css link-->
+  <link href="reset.css" rel="stylesheet">
+  <link href="style.css" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css?family=Amatic+SC" rel="stylesheet">
+</head>
+
+<body>
+  <main>
+    <nav>
+      <ol>
+        <li><a href='index.html'>About Us</a></li>
+        <li><a href=#>Locations</a></li>
+        <li><a href=#>Contact</a></li>
+        <li><a href='sales.html'>Admin</a></li>
+        <li><a href=#>Merchandise</a></li>
+      </ol>
+    </nav>
+
+    <!--Adding form-->
+    <form id="store form">
+      <section class="form">
+        <!--Adding form-->
+        <form id="store_form">
+        <!--Creating the stuff in the form-->
+        <!--Where is the store-->
+        <fieldset>
+          <label for="store_loc">Store Location:</label>
+          <input type="text" name="store_loc" placeholder="enter where your store is" required>
+        </fieldset>
+
+        <fieldset>
+          <label for="max_ppl_day">Maximum number of customers per day:</label>
+          <input type="number" name="max_ppl_day" placeholder="please use a number" required>
+        </fieldset>
+
+        <fieldset>
+          <label for="min_ppl_day"> Maximum number of customers per day:</label>
+          <input type="number" name="max_ppl_day" placeholder="please use a number" required>
+        </fieldset>
+
+        <fieldset>
+          <label for="cookies_sold_day">Cookies sold on average per day:</label>
+          <input type="number" name="cookies_sold_day" placeholder="please use a number" required>
+        </fieldset>
+
+      <button id="submit-store" type="submit">Add Store</button>
+    </form>
+
+    <!--makin' a table for our app.js data-->
+    <table>
+      <thead>
+        <td id="headers"></td>
+      </thead>
+      <tbody id = "tablething"> <!--not a great name but I'm not sure what to call it-->
+
+        <!--our table info goes here-->
+
+     </tbody>
+    </table>
+    </section>
+
+</body>
+</main>
+<script src='app.js'></script>
+</html>
