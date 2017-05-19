@@ -7,7 +7,7 @@ function Store (name, max, min, avgCookies) {
   this.max = max;
   this.min = min;
   this.avgCookies = avgCookies;
-  this.salesCalc = [];
+  this.salesCalc = []; //array we will push our data from avg cookies * people into
   this.totalSales = 0;
 }
 
@@ -31,71 +31,41 @@ var stores = [pike, seaTac, seattleCenter, capHill, alki];
 var times = [6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20];
 
 //For each time at each store, tell me the random # of people and the random # * avg cookies per hour
-//THIS IS WHERE I GET CONFUSED
-//So take the avgCust function and multiply by the avgCookies
-//loop through times (although we're not actually using them)
 Store.prototype.cookiesAtTime = function () {
-  for (var i = 0; i < times.length; i++){
-  //take avgCust and multiply by avgCookies
-  //return it
-    this.salesCalc.push(Math.floor(this.avgCust() * this.avgCookies));
+  for (var i = 0; i < times.length; i++){ //loop through the times
+    this.salesCalc.push(Math.floor(this.avgCust() * this.avgCookies)); //push avg cust * avg cookies into salesCalc blank array
   }
   return this.salesCalc;
 };
 
-
-// Loop thru the times to get the sales of cookies per hour
+// Create total sales information
 Store.prototype.generateSalesTotals = function () {
-  for (var i = 0; i < this.salesCalc.length; i++) {
-    // //give me the random#people * avg daily cookies sold
-    // var cookiesAtHour = Math.floor(this.avgCust() * this.avgCookies);
-    // console.log(cookiesAtHour);
-    // //push that list of totals into a variable we'll call salesCalc
-    // this.salesCalc.push(cookiesAtHour);
-    this.totalSales += this.salesCalc[i]; //note to self: Claire helped with this quite a bit. += is the previous thing plus whatever comes after it added together. What we're doing here is making generateSales() give us the daily total of sales
+  for (var i = 0; i < this.salesCalc.length; i++) { //loop through the salesCalc (#s at time)
+    this.totalSales += this.salesCalc[i]; //at each hour, add the total to totalSales
   }
-  return this.totalSales;
+  return this.totalSales; //outside the loop, return the #
 };
 
-//let's render some of the table as a function
-
-
-//loop through the stores and put in the first four values into the table
-  // for (var i = 0; i < stores.length; i++) {
-  //   data.push( //push the below values into the empty data array
-  //     '<td>' + stores[i].name + '</td>' + //each property of the store objects gets it's own td
-  //     '<td>' + stores[i].max + '</td>' +
-  //     '<td>' + stores[i].min + '</td>' +
-  //     '<td>' + stores[i].avgCookies + '</td>');
-  //   console.log('data is: '+ data);
-  // }
-  // var new_row; //we have to put the tds in a row
-
-//loop through the data array
-//   for (var j = 0; j < data.length; j++) {
-//     new_row = document.createElement('tr'); //the new row is a row
-//     new_row.innerHTML = data[j]; //inside the new row, put the data array stuff
-//     table.appendChild(new_row); //put all that in the table in the DOM
-//   }
-// }
-
-//Inserting the other loop into the table
-
+//Creating a table
 Store.prototype.renderTable = function() {
   //select the table element
-  var table = document.getElementById('tablething');
-  var timesForCookies = this.cookiesAtTime();
-  var timesData = [];
 
-  var headerPlaces = document.getElementById('headers');
-  var headersForTable = ['Store location', '6am', '7am', '8am', '9am', '10am', '11am', '12pm', '1pm', '2pm', '3pm', '4pm', '5pm', '6pm', '7pm'];
-  var blankArr = [];
-  for (var q = 0; q < headersForTable.length; q++) {
-    blankArr.push('<td>' + headersForTable[q] + '</td>')
+  //Grab stuff
+  var table = document.getElementById('tablething'); //grab the table
+  var headerPlaces = document.getElementById('table_header'); //grab the table headers
+
+  //Set variables
+  var timesForCookies = this.cookiesAtTime(); //timesForCookies is going to be the # people/# cookies/per hour
+  var timesData = []; //blank array we can push stuff into
+  var headersForTable = ['Store location', '6am', '7am', '8am', '9am', '10am', '11am', '12pm', '1pm', '2pm', '3pm', '4pm', '5pm', '6pm', '7pm', '8pm', 'Daily Total']; //array with our headers data
+  var blankArr = []; //blank array we can push the headers into
+
+  for (var q = 0; q < headersForTable.length; q++) { //cycle through the headers, push each one into the blank array
+    blankArr.push('<td>' + headersForTable[q] + '</td>');
   }
 
-
   timesData.push('<td>' + this.name + '</td>' );
+
   for (var k = 0; k < timesForCookies.length; k++) {
     timesData.push('<td>' + timesForCookies[k] +'</td>');
   }
@@ -104,24 +74,26 @@ Store.prototype.renderTable = function() {
   var header_row;//row for the headersForTable
   var new_row; //we have to put the tds in a row
 
-
-
 //Put in the headers
   header_row = document.createElement('tr');
-  header_row.innerHTML = headersForTable.join('');
-  table.appendChild(blankArr);
+  var headerInfo = blankArr.join('');
+  header_row.innerHTML = headerInfo;
+  table.appendChild(header_row);
 
-//loop through the data array
+//Put in the row with the times data
   new_row = document.createElement('tr'); //the new row is a row
   new_row.innerHTML = timesData.join(''); //inside the new row, put the data array stuff
   table.appendChild(new_row); //put all that in the table in the DOM
-
-
 };
 
+//Run the table generator function
+for (var i = 0; i < stores.length; i++) {
+  stores[i].renderTable();
+}
 
 var emptyArr = []; //this is where I'll put the new stores generated by the form
-//function for the event when we submit the button
+
+//Stuff with the form
 function formData(event) {
 //don't do the default when we submit
   event.preventDefault();
@@ -129,26 +101,23 @@ function formData(event) {
   var max_ppl_day= parseInt(event.target.max_ppl_day.value);
   var min_ppl_day= parseInt(event.target.min_ppl_day.value);
   var cookies_sold_day= parseInt(event.target.cookies_sold_day);
-//put Stores in our empty array
-  emptyArr.push(new Store(max_ppl_day, min_ppl_day, cookies_sold_day));
 
+  emptyArr.push(new Store(max_ppl_day, min_ppl_day, cookies_sold_day));
+  createFormTable();
   form.reset(); //each time we submit, empty the form fieldsets
 }
 
-
- // let's define createTable function
-// function createTable () {
-//   var row; //declaring an empty variable of row
-//   row = document.createElement('tr'); //make row a row in our table
-//   row.innerHTML = '<td>' + emptyArr.max_ppl_day + '</td>' + '<td>' + emptyArr.min_ppl_day + '</td>' +'<td>' + emptyArr.cookies_sold_day + '</td>';
-//   table.appendChild(row); //put our tds in the row & add it to the DOM
-// }
-
-
-//FINALLY LET'S ADD THE EVENT LISTENER!!
-form.addEventListener('submit', formData);
-// createTable();
-
-for (var i = 0; i < stores.length; i++) {
-  stores[i].renderTable();
+//put the stuff from the form in a table
+function createFormTable() {
+  var row;
+  for (var i = 0; i < emptyArr.length; i++) {
+    row = document.createElement('tr');
+    row.innerHTML = '<td>' + emptyArr[i].max_ppl_day + '</td>' +
+      '<td>' + emptyArr[i].min_ppl_day + '</td>' +
+      '<td>' + emptyArr[i].cookies_sold_day + '</td>';
+  }
+  table.appendChild(row);
 }
+
+//Adding the event listener
+form.addEventListener('submit', formData);

@@ -1,10 +1,20 @@
 
 nav {
-  background-color: #555;
+  background-color: #FFF;
   margin: 0 auto;
   display: block;
   position: relative;
   z-index: 9999;
+}
+
+nav > ol {
+  background-color: #FFF;
+}
+
+nav >ol >li {
+  display: inline-block;
+  margin: 40px;
+  background-color: #FFF;
 }
 
 main {
@@ -27,12 +37,12 @@ main {
 }
 
 .content {
-  width:400px;
+  width:600px;
   border: orange 1px dotted;
   float: left;
   background-color: RGBA(170, 88, 53, 1);
   position: absolute;
-  padding-left: 700px;
+  padding-left: 500px;
 }
 
 h1 {
@@ -40,16 +50,14 @@ h1 {
     color: white;
     font-size: 150px;
     z-index: 99999;
-    position: relative;
-    outline: dotted 2px green;
-    background-color: RGBA(170, 88, 53, 0.85);
+    text-align: left;
+    position: fixed;
+    background-color: hsla(70, 13%, 18%, 0.67);
 }
 
-nav >ol >li {
-  display: inline-block;
-  outline: dotted 2px green;
-  margin: 40px;
-  background-color: white;
+.vertical-rl {
+    writing-mode: vertical-rl;
+    float: right;
 }
 
 .BEO {
