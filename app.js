@@ -98,26 +98,28 @@ function formData(event) {
 //don't do the default when we submit
   event.preventDefault();
  //Write some variables which can represent the values in the form fields
+  var store_loc = event.target.store_loc.value;
   var max_ppl_day= parseInt(event.target.max_ppl_day.value);
   var min_ppl_day= parseInt(event.target.min_ppl_day.value);
-  var cookies_sold_day= parseInt(event.target.cookies_sold_day);
+  var cookies_sold_day= parseInt(event.target.cookies_sold_day.value);
 
-  emptyArr.push(new Store(max_ppl_day, min_ppl_day, cookies_sold_day));
-  createFormTable();
+  var formPlace = new Store(store_loc, max_ppl_day, min_ppl_day, cookies_sold_day);
+  formPlace.renderTable();
   form.reset(); //each time we submit, empty the form fieldsets
+  console.log(formPlace);
 }
 
 //put the stuff from the form in a table
-function createFormTable() {
-  var row;
-  for (var i = 0; i < emptyArr.length; i++) {
-    row = document.createElement('tr');
-    row.innerHTML = '<td>' + emptyArr[i].max_ppl_day + '</td>' +
-      '<td>' + emptyArr[i].min_ppl_day + '</td>' +
-      '<td>' + emptyArr[i].cookies_sold_day + '</td>';
-  }
-  table.appendChild(row);
-}
+// function createFormTable() {
+//   var row;
+//   for (var i = 0; i < emptyArr.length; i++) {
+//     row = document.createElement('tr');
+//     row.innerHTML = '<td>' + emptyArr[i].max_ppl_day + '</td>' +
+//       '<td>' + emptyArr[i].min_ppl_day + '</td>' +
+//       '<td>' + emptyArr[i].cookies_sold_day + '</td>';
+//   }
+//   table.appendChild(row);
+// }
 
 //Adding the event listener
 form.addEventListener('submit', formData);
