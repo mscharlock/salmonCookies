@@ -1,24 +1,20 @@
 
 nav {
-  background-color: #FFF;
+  background-color: #555;
   margin: 0 auto;
   display: block;
   position: relative;
+  z-index: 9999;
 }
 
 main {
   outline: dotted 2px green;
   width: 1080px;
   text-align: center;
-  background-color: #FFF;
 }
 
 .contentAndBox {
   margin-left:0px;
-}
-
-.clearfix {
-  clear: both;
 }
 
 .box {
@@ -26,16 +22,17 @@ main {
     border: black 15px solid;
     width: 400px;
     height: 600px;
-    float: left;
+    z-index: 999999999;
+    position: absolute;
 }
 
 .content {
-  width:300px;
-  height: 900px;
+  width:400px;
   border: orange 1px dotted;
   float: left;
+  background-color: RGBA(170, 88, 53, 1);
   position: absolute;
-  background-color: red;
+  padding-left: 700px;
 }
 
 h1 {
@@ -45,7 +42,7 @@ h1 {
     z-index: 99999;
     position: relative;
     outline: dotted 2px green;
-    /*background-color: RGBA(170, 88, 53, 0.85);*/
+    background-color: RGBA(170, 88, 53, 0.85);
 }
 
 nav >ol >li {
@@ -78,6 +75,5 @@ ul {
 * {
   font-family: Arial;
   color: #000;
-  /*background-color:RGBA(170, 88, 53, 1);*/
-
+  background-color:RGBA(170, 88, 53, 1);
 }
