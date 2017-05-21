@@ -1,125 +1,86 @@
-var form = document.getElementById('store_form');
-var table = document.getElementById('tablething');
+//Object for loc
+var loc = {
+  //name of the place
+  name: 'First And Pike',
+  //list of the mins for all hours for the loc
+  min: 23,
+  //list of the maxs for all hours for the loc
+  max: 65,
+  //this is their average cookie sales for the whole day usually
+  regCookieSales: 6.3,
+  //hours the store is open
+  hours: [6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20],
 
-//Constructor function for our store
-function Store (name, max, min, avgCookies) {
-  this.name=name;
-  this.max = max;
-  this.min = min;
-  this.avgCookies = avgCookies;
-  this.salesCalc = []; //array we will push our data from avg cookies * people into
-  this.totalSales = 0;
+  //random number of people who show up at an hour
+  randomCrowd: function () {
+    var customers = Math.floor(Math.random() * (this.max - this.min)) + this.min;
+    console.log(customers);
+    return customers;
+    },
+
+  //Average cookie sales function
+  averageCookieSales: function () {
+    //log to the console their regular sales * the random people per hour
+    var cookiez = console.log(this.regCookieSales * this.randomCrowd());
+    return cookiez;
+  },
+  //cookies sold at each hour
+  peopleAtHour: function () {
+    for (var i = 0; i < this.hours.length; i++) {
+      console.log('# people was: ' +this.randomCrowd);
+    }
+  },
+  cookiesAtHour: function () {
+    for (var i = 0; i < this.hours.length; i++) {
+      var salesHour = Math.floor(this.randomCrowd() * this.regCookieSales);
+      console.log(salesHour);
+      return salesHour;
+    }
+  }
+};//cookies sold at each hour
+
+var peopleAtHour = new function () {
+  for (var i = 0; i < this.hours.length; i++) {
+    console.log('# people was: ' +this.randomCrowd);
+  }
+};
+
+loc.peopleAtHour();
+
+var hours = [6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20];
+
+var cookiesAtHour= new function () {
+  for (var i=0; i<hours.length; i++) {
+    var salesHour = Math.floor(this.randomCrowd() * this.regCookieSales);
+    console.log(salesHour);
+    return salesHour;
+  }
+};
+
+loc.cookiesAtHour();
+
+// //Hint code from Cristina
+// cookieSale = function() {
+//     for (var i = 0; i < hours.length; i++) {
+//       var salesHour = Math.floor(this.getCustomersPerHour() * this.averageCookiesSoldPerCustomer); }
+
+loc.randomCrowd();
+
+//put CookiesAtHour in the DOM
+function domForCookies () {
+  var container = document.createElement('div');
+  container.innerHTML='<p>'+ loc.cookiesAtHour + '</p>';
+  document.body.appendChild(container);
 }
 
-//method for getting random customers
-Store.prototype.avgCust = function () {
-  var customers = parseInt(Math.floor(Math.random() * (this.max - this.min)) + this.min);
-  return customers;
-};
+domForCookies();
 
-//Let's make the stores
-var pike = new Store ('First and Pike', 65, 23, 6.3);
-var seaTac = new Store ('SeaTac Airport', 24, 3, 1.2);
-var seattleCenter = new Store ('Seattle Center', 38, 11, 3.7);
-var capHill = new Store ('Capitol Hill', 38, 20, 2.3);
-var alki = new Store ('Alki', 16, 2, 4.6);
 
-//Now let's put the stores in one array - so we can loop through them later
-var stores = [pike, seaTac, seattleCenter, capHill, alki];
-
-//Let's list all the times that the stores are open
-var times = [6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20];
-
-//For each time at each store, tell me the random # of people and the random # * avg cookies per hour
-Store.prototype.cookiesAtTime = function () {
-  for (var i = 0; i < times.length; i++){ //loop through the times
-    this.salesCalc.push(Math.floor(this.avgCust() * this.avgCookies)); //push avg cust * avg cookies into salesCalc blank array
-  }
-  return this.salesCalc;
-};
-
-// Create total sales information
-Store.prototype.generateSalesTotals = function () {
-  for (var i = 0; i < this.salesCalc.length; i++) { //loop through the salesCalc (#s at time)
-    this.totalSales += this.salesCalc[i]; //at each hour, add the total to totalSales
-  }
-  return this.totalSales; //outside the loop, return the #
-};
-
-//Creating a table
-Store.prototype.renderTable = function() {
-  //select the table element
-
-  //Grab stuff
-  var table = document.getElementById('tablething'); //grab the table
-  var headerPlaces = document.getElementById('table_header'); //grab the table headers
-
-  //Set variables
-  var timesForCookies = this.cookiesAtTime(); //timesForCookies is going to be the # people/# cookies/per hour
-  var timesData = []; //blank array we can push stuff into
-  var headersForTable = ['Store location', '6am', '7am', '8am', '9am', '10am', '11am', '12pm', '1pm', '2pm', '3pm', '4pm', '5pm', '6pm', '7pm', '8pm', 'Daily Total']; //array with our headers data
-  var blankArr = []; //blank array we can push the headers into
-
-  for (var q = 0; q < headersForTable.length; q++) { //cycle through the headers, push each one into the blank array
-    blankArr.push('<td>' + headersForTable[q] + '</td>');
-  }
-
-  timesData.push('<td>' + this.name + '</td>' );
-
-  for (var k = 0; k < timesForCookies.length; k++) {
-    timesData.push('<td>' + timesForCookies[k] +'</td>');
-  }
-  timesData.push('<td>' + this.generateSalesTotals() + '</td>' );
-
-  var header_row;//row for the headersForTable
-  var new_row; //we have to put the tds in a row
-
-//Put in the headers
-  header_row = document.createElement('tr');
-  var headerInfo = blankArr.join('');
-  header_row.innerHTML = headerInfo;
-  table.appendChild(header_row);
-
-//Put in the row with the times data
-  new_row = document.createElement('tr'); //the new row is a row
-  new_row.innerHTML = timesData.join(''); //inside the new row, put the data array stuff
-  table.appendChild(new_row); //put all that in the table in the DOM
-};
-
-//Run the table generator function
-for (var i = 0; i < stores.length; i++) {
-  stores[i].renderTable();
+//Put peopleAtHour in the dom
+function domForPeople() {
+  var container1 = document.createElement('div');
+  container1.innerHTML='<p>' + loc.peopleAtHour + '<p>';
+  document.body.appendChild(container1);
 }
 
-var emptyArr = []; //this is where I'll put the new stores generated by the form
-
-//Stuff with the form
-function formData(event) {
-//don't do the default when we submit
-  event.preventDefault();
- //Write some variables which can represent the values in the form fields
-  var store_loc = event.target.store_loc.value;
-  var max_ppl_day= parseInt(event.target.max_ppl_day.value);
-  var min_ppl_day= parseInt(event.target.min_ppl_day.value);
-  var cookies_sold_day= parseInt(event.target.cookies_sold_day.value);
-
-  var formPlace = new Store(store_loc, max_ppl_day, min_ppl_day, cookies_sold_day);
-  formPlace.renderTable();
-  form.reset(); //each time we submit, empty the form fieldsets
-  console.log(formPlace);
-}
-
-//put the stuff from the form in a table
-// function createFormTable() {
-//   var row;
-//   for (var i = 0; i < emptyArr.length; i++) {
-//     row = document.createElement('tr');
-//     row.innerHTML = '<td>' + emptyArr[i].max_ppl_day + '</td>' +
-//       '<td>' + emptyArr[i].min_ppl_day + '</td>' +
-//       '<td>' + emptyArr[i].cookies_sold_day + '</td>';
-//   }
-//   table.appendChild(row);
-// }
-
-//Adding the event listener
-form.addEventListener('submit', formData);
+domForPeople();
